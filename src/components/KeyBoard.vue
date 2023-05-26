@@ -10,30 +10,52 @@ export default {
   methods: {
     onCoinPressed(event){
       console.log(event)
+    },
+
+    getIconPath(name){
+      return `src/assets/icons/coins/${name.toLowerCase()}.svg`;
     }
   },
 
   mounted() {
     console.log(`KeyBoard mounted`)
+  },
+
+  computed(){
+    
   }
 }
 </script>
 
 <template>
-  <div class="wrapper">
-    <button @click="onCoinPressed" v-for="coin in market" :key="coin.ticker">
-      <img :src="`src/assets/icons/coins/${coin.ticker.toLowerCase()}.svg`" alt="">
-      <span>{{coin.name}}</span>
-    </button>
+  <div>
+    <div class="coins">
+      <button 
+        v-for="coin in market" 
+        @click="onCoinPressed"
+        :key="coin.ticker">
+        <img :src="getIconPath(coin.ticker)" :alt="coin.name">
+        <span>{{coin.ticker}}</span>
+      </button>
+    </div>
+    <div class="actions">
+
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.wrapper{
+.coins{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 48px);
 }
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
 button{
   display: flex;
   flex-direction: column;
