@@ -14,5 +14,5 @@ export default {
 </template>
 
 <styles scoped lang="scss">
-@import '../../assets/button.scss';
+@import '../assets/button.scss';
 </styles>
