@@ -33,23 +33,24 @@ export default {
         <Action name="Sell">
             <ChevronDoubleUpIcon class="icon" />
         </Action>
-        <Action name="Deposit">
+        <!-- <Action name="Deposit">
             <ArrowDownLeftIcon class="icon" />
         </Action>
         <Action name="Withdraw">
             <ArrowUpRightIcon class="icon" />
-        </Action>
+        </Action> -->
         <Action :name="isFavorite ? 'Bookmarked' : 'Bookmark'" @click="isFavorite = !isFavorite">
             <BookmarkSlashIcon v-if="isFavorite" class="icon" />
             <BookmarkIcon v-else class="icon" />
         </Action>
+
     </div>
 </template>
 
 <style scoped lang="scss">
 .actions {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 48px;
     grid-auto-flow: column;
 }

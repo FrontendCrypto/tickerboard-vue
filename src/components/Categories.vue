@@ -28,7 +28,7 @@ export default {
 <template>
     <div class="categories">
         <Category v-for="category in categories" :key="category.name" :name="category.name">
-            <component :is="category.icon" class=""></component>
+            <component :is="category.icon" class="icon"></component>
         </Category>
     </div>
 </template>

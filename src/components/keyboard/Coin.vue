@@ -39,17 +39,4 @@ export default {
 
 <style scoped lang="scss">
 @import '../../assets/button.scss';
-
-button {
-  background-color: hsl(0, 0%, 97%);
-  border-radius: 8px;
-  border: 0;
-  box-shadow: none;
-  &:hover{
-    background-color: hsl(0, 0%, 94%);
-  }
-  &.active {
-    background-color: hsl(0, 0%, 90%);
-  }
-}
 </style>
