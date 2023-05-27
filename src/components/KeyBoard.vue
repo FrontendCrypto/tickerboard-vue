@@ -1,51 +1,64 @@
 <script>
-import {market} from './../data/market'
+import { market } from '../data/market'
+import Actions from './Actions.vue'
+import Categories from './Categories.vue'
+import Coin from './keyboard/Coin.vue'
+import Tab from './keyboard/Tab.vue'
+
+import store from '../store'
+
 export default {
-  data(){
+  components: {
+    Categories,
+    Coin,
+    Actions,
+    Tab,
+  },
+  data() {
     return {
-      market: market
+      market: market,
+      isFavorite: true,
     }
   },
 
   methods: {
-    onCoinPressed(event){
-      console.log(event)
-    }
+
   },
 
   mounted() {
-    console.log(`KeyBoard mounted`)
+    console.log(store.state.ticker)
+  },
+
+  computed: {
+
   }
 }
 </script>
 
 <template>
-  <div class="wrapper">
-    <button @click="onCoinPressed" v-for="coin in market" :key="coin.ticker">
-      <img :src="`src/assets/icons/coins/${coin.ticker.toLowerCase()}.svg`" alt="">
-      <span>{{coin.name}}</span>
-    </button>
+  <div class="keyboard">
+    <Tab />
+    <Categories />
+    <div class="coins">
+      <Coin v-for="coin in market" :ticker="coin.ticker" :key="coin.ticker" />
+    </div>
+    <!-- @todo -->
+    <Actions :isFavorite="true" />
   </div>
 </template>
 
 <style scoped lang="scss">
-.wrapper{
+.coins {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(4, 48px);
+  gap: 4px;
 }
-button{
+
+.keyboard {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-img{
-  width: 24px;
-}
-
-span{
-  font-size: 12px;
+  gap: 4px;
+  background-color: #ffffff;
 }
 </style>
