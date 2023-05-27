@@ -38,6 +38,7 @@ span {
     font-size: 14px;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 4px;
 
     &.up {

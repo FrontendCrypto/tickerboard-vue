@@ -1,6 +1,6 @@
 <template>
   <div v-if="series.length > 0">
-    <VueApexCharts type="area" :options="options" :series="series" class="chart" />
+    <VueApexCharts ref="chart" type="area" :options="options" :series="series" class="chart" />
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       options: {
+        colors: [store.state.color],
         chart: {
           toolbar: {
             show: false
@@ -47,6 +48,21 @@ export default {
   computed: {
     series() {
       return store.state.series
+    },
+    color() {
+      return store.state.color
+    }
+  },
+  watch: {
+    color(newColor) {
+      this.updateChartColor(newColor)
+    }
+  },
+  methods: {
+    updateChartColor(newColor) {
+      this.$refs.chart.updateOptions({
+        colors: [newColor]
+      })
     }
   }
 };
