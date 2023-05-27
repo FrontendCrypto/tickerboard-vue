@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <ArrowDownIcon v-if="direction === 'down'" class="icon" />
-        <ArrowUpIcon v-else class="icon" />
-        <span>{{ change }}</span>
-        <span>%</span>
-    </div>
+    <span v-if="direction === 'down'" class="down">
+        <ArrowDownIcon class="icon" />
+        {{ change }} %
+    </span>
+    <span v-else class="up">
+        <ArrowUpIcon class="icon" />
+        {{ change }} %
+    </span>
 </template>
 
 <script>
@@ -27,4 +29,23 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.icon {
+    width: 16px;
+}
+
+span {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &.up {
+        color: green
+    }
+
+    &.down {
+        color: red;
+    }
+}
+</style>

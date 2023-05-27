@@ -4,15 +4,22 @@ import Content from './components/Content.vue'
 </script>
 
 <template>
-  <header>
-
-  </header>
   <main>
-    <div class="wrapper">
+    <div class="device">
       <Content />
       <Keyboard />
     </div>
   </main>
 </template>
 
-<style scoped></style>
+<style>
+#app {
+  display: flex;
+  justify-content: center;
+}
+
+.device {
+  width: 360px;
+  height: 800px;
+}
+</style>

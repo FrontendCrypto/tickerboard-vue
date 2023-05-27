@@ -1,6 +1,6 @@
 <template>
   <div v-if="series.length > 0">
-    <VueApexCharts width="500" type="area" :options="options" :series="series" />
+    <VueApexCharts type="area" :options="options" :series="series" class="chart" />
   </div>
 </template>
 
@@ -54,4 +54,8 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/button.scss';
+
+.chart {
+  width: 100%;
+}
 </style>

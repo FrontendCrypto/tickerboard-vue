@@ -47,35 +47,75 @@ export default {
         color() {
             return store.state.color
         },
-
     }
 }
 </script>
 
 <template>
     <div>
-        <img :src="iconPath" :alt="name">
-        <h1>{{ name }}</h1>
-        <h2>{{ ticker }}</h2>
+        <div class="header">
+            <div class="header-icon">
+                <img :src="iconPath" :alt="name">
+            </div>
+            <h2 class="header-name">{{ name }}</h2>
+            <h3 class="header-ticker">{{ ticker }}</h3>
 
-        <ul>
-            <li>Price: {{ price }} {{ currency }}</li>
-            <li>Change:
+            <h2 class="header-price">{{ price }} {{ currency }}</h2>
+            <h3 class="header-change">
                 <Change />
-            </li>
-        </ul>
+            </h3>
+        </div>
 
-        <ul>
-            <li>Capitalization: {{ marketData.capitalization }} {{ currency }}</li>
-            <li>Max. supply: {{ marketData.maxSupply }} {{ ticker }}</li>
-            <li>Current supply: {{ marketData.curentSupply }} {{ ticker }}</li>
-        </ul>
+        <div>
+            <ul>
+                <li>Capitalization: {{ marketData.capitalization }} {{ currency }}</li>
+                <li>Max. supply: {{ marketData.maxSupply }} {{ ticker }}</li>
+                <li>Current supply: {{ marketData.curentSupply }} {{ ticker }}</li>
+            </ul>
+        </div>
         <Chart />
     </div>
 </template>
 
 <style scoped lang="scss">
-h1 {
-    color: red;
+.header {
+    display: grid;
+    grid-template-rows: repeat(2, 32px);
+    grid-template-columns: 64px 1fr 1fr;
+    column-gap: 16px;
+}
+
+.header-icon {
+    grid-row: 1/3;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.header-name {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.header-ticker {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.header-price {
+    grid-row: 1;
+    grid-column: 3;
+    text-align: right;
+}
+
+.header-change {
+    grid-row: 2;
+    grid-column: 3;
+    text-align: right;
 }
 </style>
