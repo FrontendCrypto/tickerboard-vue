@@ -8,7 +8,7 @@ export const market = {
     market: {
       capitalization: 544765129,
       maxSupply: 21000000,
-      curentSupply: 19345762
+      currentSupply: 19345762
     },
     chart: {
       foreColor: '#F7931A',
@@ -29,7 +29,7 @@ export const market = {
     market: {
       capitalization: 663,
       maxSupply: 24524524,
-      curentSupply: 6363
+      currentSupply: 6363
     },
     chart: {
       foreColor: '#3C3C3D',
@@ -50,7 +50,7 @@ export const market = {
     market: {
       capitalization: 5000000000,
       maxSupply: 5000000000,
-      curentSupply: 5000000000
+      currentSupply: 5000000000
     },
     chart: {
       foreColor: '#26A17B',
@@ -71,7 +71,7 @@ export const market = {
     market: {
       capitalization: 1000000000,
       maxSupply: 200000000,
-      curentSupply: 150000000
+      currentSupply: 150000000
     },
     chart: {
       foreColor: '#F3BA2F',
@@ -92,7 +92,7 @@ export const market = {
     market: {
       capitalization: 1000000000,
       maxSupply: 1000000000,
-      curentSupply: 1000000000
+      currentSupply: 1000000000
     },
     chart: {
       foreColor: '#2775CA',
@@ -113,7 +113,7 @@ export const market = {
     market: {
       capitalization: 500000000,
       maxSupply: 1000000000,
-      curentSupply: 250000000
+      currentSupply: 250000000
     },
     chart: {
       foreColor: '#8247E5',
@@ -134,7 +134,7 @@ export const market = {
     market: {
       capitalization: 200000000,
       maxSupply: 1000000000,
-      curentSupply: 500000000
+      currentSupply: 500000000
     },
     chart: {
       foreColor: '#1E88E5',
@@ -155,7 +155,7 @@ export const market = {
     market: {
       capitalization: 400000000,
       maxSupply: 500000000,
-      curentSupply: 300000000
+      currentSupply: 300000000
     },
     chart: {
       foreColor: '#0D8CAB',
@@ -176,7 +176,7 @@ export const market = {
     market: {
       capitalization: 150000000,
       maxSupply: 2000000000,
-      curentSupply: 1000000000
+      currentSupply: 1000000000
     },
     chart: {
       foreColor: '#C2A634',
@@ -197,7 +197,7 @@ export const market = {
     market: {
       capitalization: 1000000000,
       maxSupply: 500000000,
-      curentSupply: 250000000
+      currentSupply: 250000000
     },
     chart: {
       foreColor: '#00B889',
@@ -218,7 +218,7 @@ export const market = {
     market: {
       capitalization: 300000000,
       maxSupply: 1000000000,
-      curentSupply: 400000000
+      currentSupply: 400000000
     },
     chart: {
       foreColor: '#E6007A',
@@ -240,7 +240,7 @@ export const market = {
     market: {
       capitalization: 200000000,
       maxSupply: 84000000,
-      curentSupply: 65000000
+      currentSupply: 65000000
     },
     chart: {
       foreColor: '#838383',
@@ -261,7 +261,7 @@ export const market = {
     market: {
       capitalization: 500000000,
       maxSupply: 500000000,
-      curentSupply: 500000000
+      currentSupply: 500000000
     },
     chart: {
       foreColor: '#F0B90B',
@@ -282,7 +282,7 @@ export const market = {
     market: {
       capitalization: 10000000,
       maxSupply: 1000000000000,
-      curentSupply: 500000000000
+      currentSupply: 500000000000
     },
     chart: {
       foreColor: '#E800FF',
@@ -303,7 +303,7 @@ export const market = {
     market: {
       capitalization: 250000000,
       maxSupply: 100000000000,
-      curentSupply: 75000000000
+      currentSupply: 75000000000
     },
     chart: {
       foreColor: '#EDEE34',
@@ -324,7 +324,7 @@ export const market = {
     market: {
       capitalization: 700000000,
       maxSupply: 720000000,
-      curentSupply: 500000000
+      currentSupply: 500000000
     },
     chart: {
       foreColor: '#F58220',
@@ -345,7 +345,7 @@ export const market = {
     market: {
       capitalization: 800000000,
       maxSupply: 800000000,
-      curentSupply: 800000000
+      currentSupply: 800000000
     },
     chart: {
       foreColor: '#F2A900',
@@ -366,7 +366,7 @@ export const market = {
     market: {
       capitalization: 3000000000,
       maxSupply: 5000000,
-      curentSupply: 2500000
+      currentSupply: 2500000
     },
     chart: {
       foreColor: '#FED039',
@@ -387,7 +387,7 @@ export const market = {
     market: {
       capitalization: 900000000,
       maxSupply: 1000000000,
-      curentSupply: 500000000
+      currentSupply: 500000000
     },
     chart: {
       foreColor: '#375BD2',
@@ -408,7 +408,7 @@ export const market = {
     market: {
       capitalization: 150000000,
       maxSupply: 1000000000,
-      curentSupply: 500000000
+      currentSupply: 500000000
     },
     chart: {
       foreColor: '#1E428F',

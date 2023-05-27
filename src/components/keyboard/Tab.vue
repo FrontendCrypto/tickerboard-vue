@@ -1,7 +1,7 @@
 <template>
   <div class="tab">
     <input type="search" placeholder="Search coins">
-    <button>
+    <button @click="toggleConfiguration">
       <Cog6ToothIcon class="icon" />
     </button>
   </div>
@@ -19,12 +19,15 @@ export default {
     ticker: String,
   },
   methods: {
-
-  },
-  mounted() {
+    toggleConfiguration() {
+      console.log('dentro');
+      this.$store.commit('toggleConfiguration')
+    }
   },
   computed: {
-
+    configuration() {
+      return store.state.configuration.show
+    }
   }
 };
 </script>

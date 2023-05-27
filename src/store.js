@@ -5,7 +5,12 @@ const store = createStore({
   state() {
     return {
       user: {
-        currency: '€'
+        currency: '€',
+        configuration: {
+          show: false,
+          showActions: true,
+          showCategories: true
+        }
       },
       ticker: 'btc',
       data: market['btc'],
@@ -23,6 +28,15 @@ const store = createStore({
       state.series = market[state.ticker].chart.series
       state.change = market[state.ticker].change
       state.icon = market[state.ticker].icon
+    },
+    toggleCategories(state) {
+      state.user.configuration.showCategories = !state.user.configuration.showCategories
+    },
+    toggleActions(state) {
+      state.user.configuration.showActions = !state.user.configuration.showActions
+    },
+    toggleConfiguration(state) {
+      state.user.configuration.show = !state.user.configuration.show
     }
   }
 })
