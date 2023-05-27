@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
+    "apexcharts": "^3.40.0",
     "pinia": "^2.0.36",
     "sass": "^1.62.1",
     "vue": "^3.3.2",
+    "vue3-apexcharts": "^1.4.1",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

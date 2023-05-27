@@ -1,40 +1,52 @@
 <script>
 import store from '../store'
 import Chart from './Chart.vue'
+import Change from './Change.vue'
+
 export default {
     components: {
-        Chart
-    },
-    data() {
-        return {
-
-        }
-    },
-    mounted() {
+        Chart,
+        Change
     },
     methods: {
-
+        formatNumber(number) {
+            return new Intl.NumberFormat('es-ES', { maximumFractionDigits: 2 }).format(number)
+        }
     },
     computed: {
         // Computed are re-evaluated on change => store
-        getTicker() {
-            return store.state.ticker
+        iconPath() {
+            const part = this.ticker.toLowerCase();
+            return `src/assets/icons/coins/${part}.svg`
         },
-        getName() {
+        icon() {
+            return store.state.icon
+        },
+        currency() {
+            return store.state.user.currency
+        },
+        ticker() {
+            return store.state.ticker.toUpperCase()
+        },
+        name() {
             return store.state.data.name
         },
-        getPrice() {
-            return store.state.data.price
+        price() {
+            return this.formatNumber(store.state.data.price)
         },
-        getChange() {
-            return store.state.data.change
+        change() {
+            return this.formatNumber(store.state.data.change)
         },
-        getMarketData() {
-            return store.state.data.market
+        marketData() {
+            return {
+                capitalization: this.formatNumber(store.state.data.market.capitalization),
+                maxSupply: this.formatNumber(store.state.data.market.maxSupply),
+                currentSupply: this.formatNumber(store.state.data.market.currentSupply),
+            }
         },
-        getColor() {
+        color() {
             return store.state.color
-        }
+        },
 
     }
 }
@@ -42,18 +54,21 @@ export default {
 
 <template>
     <div>
-        <h1>{{ getTicker }}</h1>
+        <img :src="iconPath" :alt="name">
+        <h1>{{ name }}</h1>
+        <h2>{{ ticker }}</h2>
 
         <ul>
-            <li>Name: {{ getName }}</li>
-            <li>Price: {{ getPrice }}</li>
-            <li>Change: {{ getChange }}</li>
+            <li>Price: {{ price }} {{ currency }}</li>
+            <li>Change:
+                <Change />
+            </li>
         </ul>
 
         <ul>
-            <li>Capitalization: {{ getMarketData.capitalization }}</li>
-            <li>Max. supply: {{ getMarketData.maxSupply }}</li>
-            <li>Current supply: {{ getMarketData.curentSupply }}</li>
+            <li>Capitalization: {{ marketData.capitalization }} {{ currency }}</li>
+            <li>Max. supply: {{ marketData.maxSupply }} {{ ticker }}</li>
+            <li>Current supply: {{ marketData.curentSupply }} {{ ticker }}</li>
         </ul>
         <Chart />
     </div>
