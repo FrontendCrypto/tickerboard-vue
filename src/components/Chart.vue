@@ -1,6 +1,6 @@
 <template>
   <div>
-    Chart
+    {{ getSeries.toString() }}
   </div>
 </template>
 
@@ -9,11 +9,18 @@ import store from '../store'
 
 export default {
   components: {
-    
+
   },
   props: {
     ticker: String,
   },
+  mounted() {
+  },
+  computed: {
+    getSeries() {
+      return store.state.series
+    }
+  }
 
 };
 </script>

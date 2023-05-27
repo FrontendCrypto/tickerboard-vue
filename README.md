@@ -1,6 +1,13 @@
 # TickerBoardVue
 
-This template should help get you started developing with Vue 3 in Vite.
+This repository is a Vue 3 project template called "TickerBoardVue". It is set up with Vite, a fast and lightweight build tool for Vue applications. Here are some additional details about the project:
+
+- The project uses the `@heroicons/vue` library for easily incorporating Heroicons into the Vue components.
+- It also includes the `pinia` library for state management.
+- The `sass` package is used for Sass/SCSS support in the project.
+- Vue Router is not included in the dependencies, so if you need routing capabilities, you'll need to install and configure it separately.
+- The project uses Vue 3 and Vuex 4 for state management.
+
 
 ## Recommended IDE Setup
 

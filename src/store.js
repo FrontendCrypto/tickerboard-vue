@@ -1,13 +1,13 @@
-// import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import { market } from './data/market'
-// Create a new store instance.
+
 const store = createStore({
   state() {
     return {
       ticker: 'btc',
       data: market['btc'],
-      color: market['btc'].chart.foreColor
+      color: market['btc'].chart.foreColor,
+      series: market['btc'].chart.series[0].data
     }
   },
   mutations: {
@@ -15,14 +15,9 @@ const store = createStore({
       state.ticker = value
       state.data = market[state.ticker]
       store.color = market[state.ticker].chart.foreColor
-      console.log(store.color);
+      store.series = market[state.ticker].chart.series[0].data
     }
   }
 })
 
-// const app = createApp({
-//   /* your root component */
-// })
-
-// Install the store instance as a plugin
 export default store
