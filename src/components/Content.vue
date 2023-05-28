@@ -54,8 +54,8 @@ export default {
             return store.state.color
         },
         isBookmarked() {
-            // Check if current ticker is in favorites aray from store
-            return store.state.user.favorites.includes(this.ticker)
+            // Get bookmark status
+            return store.getters.isBookmarked
         }
     }
 }

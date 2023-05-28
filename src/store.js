@@ -21,6 +21,11 @@ const store = createStore({
       icon: market['btc'].icon
     }
   },
+  getters: {
+    isBookmarked(state) {
+      return state.user.favorites.includes(state.ticker)
+    }
+  },
   mutations: {
     selectCoin(state, value) {
       state.ticker = value
@@ -39,7 +44,7 @@ const store = createStore({
     toggleConfiguration(state) {
       state.user.configuration.show = !state.user.configuration.show
     },
-    updateFavorites(state, value) {
+    updateBookmarks(state, value) {
       state.user.favorites = value
     }
   }
