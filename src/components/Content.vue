@@ -2,11 +2,14 @@
 import store from '../store'
 import Chart from './Chart.vue'
 import Change from './Change.vue'
+import { BookmarkIcon } from '@heroicons/vue/24/solid'
 
 export default {
+
     components: {
         Chart,
-        Change
+        Change,
+        BookmarkIcon,
     },
     methods: {
         formatNumber(number) {
@@ -26,7 +29,10 @@ export default {
             return store.state.user.currency
         },
         ticker() {
-            return store.state.ticker.toUpperCase()
+            return store.state.ticker
+        },
+        formattedTicker() {
+            return this.ticker.toUpperCase()
         },
         name() {
             return store.state.data.name
@@ -47,6 +53,10 @@ export default {
         color() {
             return store.state.color
         },
+        isBookmarked() {
+            // Check if current ticker is in favorites aray from store
+            return store.state.user.favorites.includes(this.ticker)
+        }
     }
 }
 </script>
@@ -56,9 +66,12 @@ export default {
         <header role="banner" class="header">
             <div class="header-icon">
                 <img :src="iconPath" :alt="name">
+                <div class="bookmark" v-if="isBookmarked">
+                    <BookmarkIcon class="bookmark-icon" />
+                </div>
             </div>
             <h2 class="header-name">{{ name }}</h2>
-            <h3 class="header-ticker">{{ ticker }}</h3>
+            <h3 class="header-ticker">{{ formattedTicker }}</h3>
 
             <h2 class="header-price">{{ price }} {{ currency }}</h2>
             <h3 class="header-change">
@@ -74,11 +87,11 @@ export default {
                 </div>
                 <div class="item">
                     <h5>Max. Supply</h5>
-                    <p>{{ marketData.maxSupply }} {{ ticker }}</p>
+                    <p>{{ marketData.maxSupply }} {{ formattedTicker }}</p>
                 </div>
                 <div class="item">
                     <h5>Current Supply</h5>
-                    <p>{{ marketData.currentSupply }} {{ ticker }}</p>
+                    <p>{{ marketData.currentSupply }} {{ formattedTicker }}</p>
                 </div>
             </div>
         </main>
@@ -104,10 +117,32 @@ export default {
     grid-column: 1;
     display: flex;
     align-items: center;
+    position: relative;
 
     img {
         width: 64px;
         height: 64px;
+        z-index: 1;
+    }
+
+    .bookmark {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #ffffff;
+        z-index: 2;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        .bookmark-icon {
+            width: 16px;
+            height: 16px;
+            color: #2b2b2b
+        }
     }
 }
 

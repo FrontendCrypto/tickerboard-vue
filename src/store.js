@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import { market } from './data/market'
-
+import { preferences } from './data/preferences'
 const store = createStore({
   state() {
     return {
@@ -10,7 +10,8 @@ const store = createStore({
           show: false,
           showActions: true,
           showCategories: true
-        }
+        },
+        favorites: preferences.favorites
       },
       ticker: 'btc',
       data: market['btc'],
@@ -37,6 +38,9 @@ const store = createStore({
     },
     toggleConfiguration(state) {
       state.user.configuration.show = !state.user.configuration.show
+    },
+    updateFavorites(state, value) {
+      state.user.favorites = value
     }
   }
 })

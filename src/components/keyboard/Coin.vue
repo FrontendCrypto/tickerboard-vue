@@ -16,9 +16,6 @@ export default {
       this.$store.commit('selectCoin', this.getFormattedTicker) // @test lorcase
     }
   },
-  mounted() {
-    // console.log(store.state.ticker);
-  },
   computed: {
     getFormattedTicker() {
       return this.ticker.toLowerCase()

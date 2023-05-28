@@ -15,10 +15,6 @@ export default {
     props: {
         isFavorite: Boolean,
     }
-    // data() {
-    //     return {
-    //     }
-    // }
 }
 </script>
 
@@ -34,11 +30,11 @@ export default {
             <ChevronDoubleUpIcon class="icon" />
         </Action>
         <!-- <Action name="Deposit">
-            <ArrowDownLeftIcon class="icon" />
-        </Action>
-        <Action name="Withdraw">
-            <ArrowUpRightIcon class="icon" />
-        </Action> -->
+                <ArrowDownLeftIcon class="icon" />
+            </Action>
+            <Action name="Withdraw">
+                <ArrowUpRightIcon class="icon" />
+            </Action> -->
         <Action :name="isFavorite ? 'Bookmarked' : 'Bookmark'" @click="isFavorite = !isFavorite">
             <BookmarkSlashIcon v-if="isFavorite" class="icon" />
             <BookmarkIcon v-else class="icon" />
