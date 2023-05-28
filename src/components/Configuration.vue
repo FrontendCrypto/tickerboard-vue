@@ -1,16 +1,16 @@
 <template>
     <Transition>
-    <div :class="['configuration']" v-show="configuration">
-        <div class="configuration-item">
-            <v-switch label="¿Show categories?" inset v-model="categories" @click="toggleCategories"></v-switch>
-            <v-switch label="¿Show actions?" inset v-model="actions" @click="toggleActions"></v-switch>
-            <v-select v-model="select" :items="items" item-title="state" item-value="abbr" label="Select favorite currency"
-                persistent-hint return-object single-line></v-select>
+        <div :class="['configuration']" v-show="configuration">
+            <div class="configuration-item">
+                <v-switch label="¿Show categories?" inset v-model="categories" @click="toggleCategories"></v-switch>
+                <v-switch label="¿Show actions?" inset v-model="actions" @click="toggleActions"></v-switch>
+                <v-select v-model="select" :items="items" item-title="state" item-value="abbr"
+                    label="Select favorite currency" persistent-hint return-object single-line></v-select>
+            </div>
+            <v-btn variant="text" block @click="hideConfiguration">
+                Close
+            </v-btn>
         </div>
-        <v-btn variant="text" block @click="hideConfiguration">
-            Close
-        </v-btn>
-    </div>
     </Transition>
 </template>
 
@@ -36,7 +36,7 @@ export default {
         showConfiguration() {
 
         },
-        hideConfiguration(element) {
+        hideConfiguration() {
             this.$store.commit('toggleConfiguration')
         }
     },
@@ -63,20 +63,21 @@ export default {
     bottom: 0;
     z-index: 0;
 }
+
 .slide-enter-active,
 .slide-leave-active {
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .slide-enter {
-  transform: translateY(100%);
+    transform: translateY(100%);
 }
 
 .slide-leave-to {
-  transform: translateY(100%);
+    transform: translateY(100%);
 }
 
 .slide-leave {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 </style>

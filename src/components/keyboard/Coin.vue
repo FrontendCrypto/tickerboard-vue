@@ -39,4 +39,8 @@ export default {
 
 <style scoped lang="scss">
 @import '../../assets/button.scss';
+
+span {
+  font-size: 10px;
+}
 </style>
