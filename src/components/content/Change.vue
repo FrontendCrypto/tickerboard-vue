@@ -11,7 +11,7 @@
 
 <script>
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/vue/24/solid'
-import store from '../store'
+import store from '../../store'
 
 export default {
     components: {

@@ -16,7 +16,7 @@ export default {
 </template>
 
 <styles scoped lang="scss">
-@import '../assets/button.scss';
+@import '../../assets/button.scss';
 .icon{
     width: 16px;
     color: rgb(70, 70, 70);

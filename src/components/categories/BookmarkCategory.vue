@@ -1,5 +1,5 @@
 <script>
-import store from '../store'
+import store from '../../store'
 
 export default {
     computed: {
@@ -19,7 +19,7 @@ export default {
 </template>
 
 <styles scoped lang="scss">
-@import '../assets/button.scss';
+@import '../../assets/button.scss';
 
 button {
     position: relative;

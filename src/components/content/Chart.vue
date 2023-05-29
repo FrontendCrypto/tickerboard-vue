@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import store from '../store'
+import store from '../../store'
 import VueApexCharts from 'vue3-apexcharts'
 
 export default {
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/button.scss';
+@import '../../assets/button.scss';
 
 .chart {
   width: 100%;
