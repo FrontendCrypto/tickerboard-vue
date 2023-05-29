@@ -2,14 +2,16 @@
 export default {
     props: {
         name: String
-    }
+    },
+    computed: {}
 }
 </script>
 
 <template>
     <button>
-        <slot ></slot>
+        <slot></slot>
         <span>{{ name }}</span>
+        <span></span>
     </button>
 </template>
 

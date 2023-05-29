@@ -16,9 +16,6 @@ export default {
       this.$store.commit('selectCoin', this.getFormattedTicker) // @test lorcase
     }
   },
-  mounted() {
-    // console.log(store.state.ticker);
-  },
   computed: {
     getFormattedTicker() {
       return this.ticker.toLowerCase()
@@ -39,4 +36,8 @@ export default {
 
 <style scoped lang="scss">
 @import '../../assets/button.scss';
+
+span {
+  font-size: 10px;
+}
 </style>

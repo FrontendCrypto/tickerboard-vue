@@ -1,6 +1,5 @@
 <template>
-    <Transition>
-    <div :class="['configuration']" v-show="configuration">
+    <div class="configuration" ref="configuration">
         <div class="configuration-item">
             <v-switch label="¿Show categories?" inset v-model="categories" @click="toggleCategories"></v-switch>
             <v-switch label="¿Show actions?" inset v-model="actions" @click="toggleActions"></v-switch>
@@ -11,11 +10,12 @@
             Close
         </v-btn>
     </div>
-    </Transition>
 </template>
 
 <script>
 import store from '../store'
+import anime from 'animejs/lib/anime.es.js';
+
 export default {
     data() {
         return {
@@ -26,6 +26,9 @@ export default {
             ],
         }
     },
+    mounted() {
+        console.log(this.$refs.configuration.clientHeight)
+    },
     methods: {
         toggleCategories() {
             this.$store.commit('toggleCategories')
@@ -33,11 +36,27 @@ export default {
         toggleActions() {
             this.$store.commit('toggleActions')
         },
-        showConfiguration() {
-
-        },
-        hideConfiguration(element) {
+        hideConfiguration() {
             this.$store.commit('toggleConfiguration')
+            this.hide()
+        },
+        hide() {
+            anime({
+                targets: this.$refs.configuration,
+                translateY: 0
+            });
+        },
+        show() {
+            anime({
+                targets: this.$refs.configuration,
+                translateY: -this.getHeight - 24,
+                borderRadius: ['0%', '16px']
+            });
+        }
+    },
+    watch: {
+        isVisible(isVisible) {
+            isVisible ? this.show() : this.hide()
         }
     },
     computed: {
@@ -47,8 +66,11 @@ export default {
         actions() {
             return store.state.user.configuration.showActions
         },
-        configuration() {
+        isVisible() {
             return store.state.user.configuration.show
+        },
+        getHeight() {
+            return this.$refs.configuration.clientHeight
         }
     }
 }
@@ -60,23 +82,7 @@ export default {
     padding: 16px;
     background-color: black;
     position: absolute;
-    bottom: 0;
+    top: 0;
     z-index: 0;
-}
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 0.3s ease;
-}
-
-.slide-enter {
-  transform: translateY(100%);
-}
-
-.slide-leave-to {
-  transform: translateY(100%);
-}
-
-.slide-leave {
-  transform: translateY(0);
 }
 </style>

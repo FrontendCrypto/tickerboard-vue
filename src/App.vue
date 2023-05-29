@@ -33,5 +33,6 @@ import { Cog6ToothIcon } from '@heroicons/vue/24/solid'
   width: 360px;
   height: 800px;
   position: relative;
+  overflow: hidden;
 }
 </style>

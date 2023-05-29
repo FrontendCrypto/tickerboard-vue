@@ -11,6 +11,7 @@ button {
   box-shadow: none;
   &:hover {
     background-color: hsl(0, 0%, 94%);
+    cursor: pointer;
   }
   &.active {
     background-color: hsl(0, 0%, 90%);
@@ -26,5 +27,5 @@ span {
 }
 
 .icon {
-  width: 20px;
+  width: 18px;
 }

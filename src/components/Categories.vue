@@ -1,9 +1,12 @@
 <script>
 import Category from './Category.vue'
+import BookmarkCategory from './BookmarkCategory.vue'
+
 import { BookmarkIcon, CubeTransparentIcon, CubeIcon, EllipsisHorizontalCircleIcon, PuzzlePieceIcon } from '@heroicons/vue/24/solid'
 export default {
     components: {
         Category,
+        BookmarkCategory,
         CubeTransparentIcon,
         CubeIcon,
         EllipsisHorizontalCircleIcon,
@@ -14,12 +17,17 @@ export default {
         return {
             categories: [
                 { name: 'All', icon: EllipsisHorizontalCircleIcon },
-                { name: 'Favorites', icon: BookmarkIcon },
+                { name: 'Bookmarks', icon: BookmarkIcon },
                 { name: 'DeFi', icon: CubeTransparentIcon },
                 { name: 'Gaming', icon: PuzzlePieceIcon },
                 { name: 'PoW', icon: CubeIcon },
                 { name: 'PoS', icon: EllipsisHorizontalCircleIcon },
             ]
+        }
+    },
+    computed: {
+        getslug(name) {
+            return name.toLowerCase()
         }
     }
 }
@@ -27,9 +35,10 @@ export default {
 
 <template>
     <div class="categories">
-        <Category v-for="category in categories" :key="category.name" :name="category.name">
+        <component v-for="category in categories" :is="category.name == 'Bookmarks' ? 'BookmarkCategory' : 'Category'"
+            :name="category.name" :key="category.name">
             <component :is="category.icon" class="icon"></component>
-        </Category>
+        </component>
     </div>
 </template>
 

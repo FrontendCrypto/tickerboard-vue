@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import { market } from './data/market'
-
+import { preferences } from './data/preferences'
 const store = createStore({
   state() {
     return {
@@ -10,7 +10,8 @@ const store = createStore({
           show: false,
           showActions: true,
           showCategories: true
-        }
+        },
+        bookmarks: preferences.bookmarks
       },
       ticker: 'btc',
       data: market['btc'],
@@ -18,6 +19,11 @@ const store = createStore({
       series: market['btc'].chart.series,
       change: market['btc'].change,
       icon: market['btc'].icon
+    }
+  },
+  getters: {
+    isBookmarked(state) {
+      return state.user.bookmarks.includes(state.ticker)
     }
   },
   mutations: {
@@ -37,6 +43,14 @@ const store = createStore({
     },
     toggleConfiguration(state) {
       state.user.configuration.show = !state.user.configuration.show
+    },
+    addBookmark(state) {
+      // Add current ticker to bookmarks array.
+      state.user.bookmarks.push(state.ticker)
+    },
+    removeBookmark(state) {
+      // Create nearray of bookmarks filtering current ticker.
+      state.user.bookmarks = state.user.bookmarks.filter((item) => item !== state.ticker)
     }
   }
 })

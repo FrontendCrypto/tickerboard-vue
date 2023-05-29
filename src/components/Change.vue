@@ -42,11 +42,15 @@ span {
     gap: 4px;
 
     &.up {
-        color: green
+        color: green;
     }
 
     &.down {
         color: red;
+    }
+
+    .icon {
+        color: inherit
     }
 }
 </style>
