@@ -42,8 +42,8 @@ export default {
 
 <template>
     <button @click="this.toggle()">
-        <BookmarkIcon v-if="isBookmarked" class="icon" />
-        <BookmarkSlashIcon v-else class="icon" />
+        <BookmarkSlashIcon v-if="isBookmarked" class="icon" />
+        <BookmarkIcon v-else class="icon" />
         <span>{{ getText }}</span>
     </button>
 </template>

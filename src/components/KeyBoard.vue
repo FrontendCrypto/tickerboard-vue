@@ -4,12 +4,15 @@ import Actions from './Actions.vue'
 import Categories from './Categories.vue'
 import Coin from './keyboard/Coin.vue'
 import Tab from './keyboard/Tab.vue'
+import Notch from './keyboard/Notch.vue'
 import Configuration from './Configuration.vue'
+import anime from 'animejs/lib/anime.es.js';
 
 import store from '../store'
 
 export default {
   components: {
+    Notch,
     Categories,
     Coin,
     Actions,
@@ -25,13 +28,43 @@ export default {
     },
     categories() {
       return store.state.user.configuration.showCategories
+    },
+    isVisible() {
+      return store.getters.isKeyboardVisible
+    }
+  },
+  watch: {
+    isVisible(value) {
+      value ? this.hide() : this.show()
+    }
+  },
+  methods: {
+    show() {
+      anime({
+        targets: this.$refs.keyboard,
+        bottom: 0
+      })
+      this.$store.commit('hideConfiguration')
+      // Hide configuration if open
+    },
+    hide() {
+      const height = this.$refs.keyboard.offsetHeight;
+      anime({
+        targets: this.$refs.keyboard,
+        bottom: -height
+      })
+      this.$store.commit('hideConfiguration')
+      // this.$refs.keyboard.style.bottom = `-${height}px`
+      //hide configuration if open
+      // console.log('hide', this.$refs.keyboard);
     }
   }
 }
 </script>
 
 <template>
-  <div class="keyboard">
+  <div class="keyboard" ref="keyboard">
+    <Notch />
     <Configuration class="configuration" />
     <Tab />
     <Categories v-show="categories" />
@@ -61,6 +94,7 @@ export default {
   bottom: 0;
   z-index: 3;
   width: 100%;
+  user-select: none;
 
   &::after {
     content: '';

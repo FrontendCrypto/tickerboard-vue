@@ -11,7 +11,10 @@ const store = createStore({
           showActions: true,
           showCategories: true
         },
-        bookmarks: preferences.bookmarks
+        bookmarks: preferences.bookmarks,
+        keyboard: {
+          show: true
+        }
       },
       ticker: 'btc',
       data: market['btc'],
@@ -24,6 +27,9 @@ const store = createStore({
   getters: {
     isBookmarked(state) {
       return state.user.bookmarks.includes(state.ticker)
+    },
+    isKeyboardVisible(state) {
+      return state.user.keyboard.show
     }
   },
   mutations: {
@@ -44,6 +50,12 @@ const store = createStore({
     toggleConfiguration(state) {
       state.user.configuration.show = !state.user.configuration.show
     },
+    hideConfiguration(state) {
+      state.user.configuration.show = false
+    },
+    showConfiguration(state) {
+      state.user.configuration.show = true
+    },
     addBookmark(state) {
       // Add current ticker to bookmarks array.
       state.user.bookmarks.push(state.ticker)
@@ -51,6 +63,12 @@ const store = createStore({
     removeBookmark(state) {
       // Create nearray of bookmarks filtering current ticker.
       state.user.bookmarks = state.user.bookmarks.filter((item) => item !== state.ticker)
+    },
+    hideKeyboard(state) {
+      state.user.keyboard.show = false
+    },
+    showKeyboard(state) {
+      state.user.keyboard.show = true
     }
   }
 })
