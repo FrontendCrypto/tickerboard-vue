@@ -6,12 +6,23 @@ export default {
         BookmarkIcon,
         BookmarkSlashIcon
     },
+    data() {
+        return {
+            text: {
+                bookmarked: 'Bookmarked',
+                bookmark: 'Bookmark'
+            }
+        }
+    },
     props: {
         name: String
     },
     computed: {
         isBookmarked() {
             return store.getters.isBookmarked
+        },
+        getText() {
+            return this.isBookmarked ? 'Bookmarked' : 'Bookmark'
         }
     },
     methods: {
@@ -33,7 +44,7 @@ export default {
     <button @click="this.toggle()">
         <BookmarkIcon v-if="isBookmarked" class="icon" />
         <BookmarkSlashIcon v-else class="icon" />
-        <span>{{ name }}</span>
+        <span>{{ getText }}</span>
     </button>
 </template>
 

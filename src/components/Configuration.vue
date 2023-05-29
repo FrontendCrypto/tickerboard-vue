@@ -3,7 +3,9 @@
         <div class="configuration-item">
             <v-switch label="¿Show categories?" inset v-model="categories" @click="toggleCategories"></v-switch>
             <v-switch label="¿Show actions?" inset v-model="actions" @click="toggleActions"></v-switch>
-            <v-select v-model="select" :items="items" item-title="state" item-value="abbr" label="Select favorite currency"
+            <v-select v-model="currencySelect" :items="curencies" item-title="state" item-value="abbr" label="Select favorite currency"
+                persistent-hint return-object single-line></v-select>
+            <v-select v-model="languageSelect" :items="languages" item-title="state" item-value="abbr" label="Select language"
                 persistent-hint return-object single-line></v-select>
         </div>
         <v-btn variant="text" block @click="hideConfiguration">
@@ -19,10 +21,16 @@ import anime from 'animejs/lib/anime.es.js';
 export default {
     data() {
         return {
-            select: { state: 'Euro (€)', abbr: 'EUR' },
-            items: [
+            currencySelect: { state: 'Euro (€)', abbr: 'EUR' },
+            languageSelect: { state: 'English', abbr: 'EN' },
+            curencies: [
                 { state: 'Euro (€)', abbr: 'EUR' },
                 { state: 'United Stated Dollar ($)', abbr: 'EUR' },
+            ],
+            // Refactor, move to store or data object
+            languages: [
+                { state: 'Español', abbr: 'ES' },
+                { state: 'English', abbr: 'EN' },
             ],
         }
     },

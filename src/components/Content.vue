@@ -3,9 +3,9 @@ import store from '../store'
 import Chart from './Chart.vue'
 import Change from './Change.vue'
 import { BookmarkIcon } from '@heroicons/vue/24/solid'
+import fitty from 'fitty'
 
 export default {
-
     components: {
         Chart,
         Change,
@@ -15,6 +15,12 @@ export default {
         formatNumber(number) {
             return new Intl.NumberFormat('es-ES', { maximumFractionDigits: 2 }).format(number)
         }
+    },
+    mounted() {
+        fitty(this.$refs.headerName, {
+            maxSize: 20,
+            multiline: false
+        })
     },
     computed: {
         // Computed are re-evaluated on change => store
@@ -67,10 +73,10 @@ export default {
             <div class="header-icon">
                 <img :src="iconPath" :alt="name">
                 <div class="bookmark" v-if="isBookmarked">
-                    <BookmarkIcon class="bookmark-icon" />
+                    <BookmarkIcon @click="this.$store.commit('removeBookmark')" class="bookmark-icon" />
                 </div>
             </div>
-            <h2 class="header-name">{{ name }}</h2>
+            <h2 class="header-name" ref="headerName">{{ name }}</h2>
             <h3 class="header-ticker">{{ formattedTicker }}</h3>
 
             <h2 class="header-price">{{ price }} {{ currency }}</h2>
@@ -149,23 +155,34 @@ export default {
 .header-name {
     grid-row: 1;
     grid-column: 2;
+    display: flex;
+    align-items: center;
 }
 
 .header-ticker {
     grid-row: 2;
     grid-column: 2;
+    display: flex;
+    align-items: center;
 }
 
 .header-price {
     grid-row: 1;
     grid-column: 3;
     text-align: right;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .header-change {
     grid-row: 2;
     grid-column: 3;
     text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .market-data {

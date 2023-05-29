@@ -127,7 +127,7 @@ export const market = {
   },
   xrp: {
     ticker: 'XRP',
-    name: 'XRP',
+    name: 'Ripple',
     icon: '../assets/icons/coins/xrp.svg',
     price: 0.85,
     change: -2.17,
