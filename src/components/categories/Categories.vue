@@ -1,6 +1,6 @@
 <script>
-import Category from './Category.vue'
-import BookmarkCategory from './BookmarkCategory.vue'
+import Category from '../categories/Category.vue'
+import BookmarkCategory from '../categories/BookmarkCategory.vue'
 
 import { BookmarkIcon, CubeTransparentIcon, CubeIcon, EllipsisHorizontalCircleIcon, PuzzlePieceIcon } from '@heroicons/vue/24/solid'
 export default {

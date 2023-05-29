@@ -1,12 +1,14 @@
 <script>
-import store from '../store'
+import store from '../../store'
 import Chart from './Chart.vue'
 import Change from './Change.vue'
+import BookmarkAction from '../actions/BookmarkAction.vue'
 import { BookmarkIcon } from '@heroicons/vue/24/solid'
 import fitty from 'fitty'
 
 export default {
     components: {
+        BookmarkAction,
         Chart,
         Change,
         BookmarkIcon,
@@ -69,7 +71,7 @@ export default {
 
 <template>
     <div class="content">
-        <header role="banner" class="header">
+        <header class="header">
             <div class="header-icon">
                 <img :src="iconPath" :alt="name">
                 <div class="bookmark" v-if="isBookmarked">
@@ -85,6 +87,7 @@ export default {
             </h3>
         </header>
         <Chart />
+        <BookmarkAction />
         <main>
             <div class="market-data">
                 <div class="item">
@@ -191,5 +194,12 @@ export default {
     grid-template-columns: 1fr 1fr;
     row-gap: 8px;
     column-gap: 16px;
+}
+
+.header-name,
+.header-price,
+.header-ticker,
+.market-data {
+    color: #ffffff;
 }
 </style>

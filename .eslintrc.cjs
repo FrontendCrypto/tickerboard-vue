@@ -11,5 +11,8 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
+  },
+  rules: {
+    'vuejs-accessibility/no-static-element-interactions': 'off'
   }
 }

@@ -1,6 +1,6 @@
 <script>
-import Action from './keyboard/Action.vue'
-import BookmarkAction from './keyboard/BookmarkAction.vue'
+import Action from './Action.vue'
+import BookmarkAction from './BookmarkAction.vue'
 import { ArrowsUpDownIcon, ChevronDoubleUpIcon, ChevronDoubleDownIcon } from '@heroicons/vue/24/solid'
 export default {
     components: {
@@ -27,20 +27,13 @@ export default {
         <Action name="Sell">
             <ChevronDoubleUpIcon class="icon" />
         </Action>
-        <!-- <Action name="Deposit">
-                    <ArrowDownLeftIcon class="icon" />
-                </Action>
-                <Action name="Withdraw">
-                    <ArrowUpRightIcon class="icon" />
-                </Action> -->
-        <BookmarkAction />
     </div>
 </template>
 
 <style scoped lang="scss">
 .actions {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 48px;
     grid-auto-flow: column;
 }
