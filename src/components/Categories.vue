@@ -1,12 +1,12 @@
 <script>
 import Category from './Category.vue'
-import Favorites from './Favorites.vue'
+import BookmarkCategory from './BookmarkCategory.vue'
 
 import { BookmarkIcon, CubeTransparentIcon, CubeIcon, EllipsisHorizontalCircleIcon, PuzzlePieceIcon } from '@heroicons/vue/24/solid'
 export default {
     components: {
         Category,
-        Favorites,
+        BookmarkCategory,
         CubeTransparentIcon,
         CubeIcon,
         EllipsisHorizontalCircleIcon,
@@ -17,7 +17,7 @@ export default {
         return {
             categories: [
                 { name: 'All', icon: EllipsisHorizontalCircleIcon },
-                { name: 'Favorites', icon: BookmarkIcon },
+                { name: 'Bookmarks', icon: BookmarkIcon },
                 { name: 'DeFi', icon: CubeTransparentIcon },
                 { name: 'Gaming', icon: PuzzlePieceIcon },
                 { name: 'PoW', icon: CubeIcon },
@@ -35,7 +35,7 @@ export default {
 
 <template>
     <div class="categories">
-        <component v-for="category in categories" :is="category.name == 'Favorites' ? 'Favorites' : 'Category'"
+        <component v-for="category in categories" :is="category.name == 'Bookmarks' ? 'BookmarkCategory' : 'Category'"
             :name="category.name" :key="category.name">
             <component :is="category.icon" class="icon"></component>
         </component>

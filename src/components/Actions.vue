@@ -1,16 +1,14 @@
 <script>
 import Action from './keyboard/Action.vue'
-import { ArrowsUpDownIcon, ChevronDoubleUpIcon, ChevronDoubleDownIcon, ArrowDownLeftIcon, ArrowUpRightIcon, BookmarkIcon, BookmarkSlashIcon } from '@heroicons/vue/24/solid'
+import BookmarkAction from './keyboard/BookmarkAction.vue'
+import { ArrowsUpDownIcon, ChevronDoubleUpIcon, ChevronDoubleDownIcon } from '@heroicons/vue/24/solid'
 export default {
     components: {
         Action,
+        BookmarkAction,
         ArrowsUpDownIcon,
         ChevronDoubleDownIcon,
         ChevronDoubleUpIcon,
-        ArrowDownLeftIcon,
-        ArrowUpRightIcon,
-        BookmarkIcon,
-        BookmarkSlashIcon,
     },
     props: {
         isFavorite: Boolean,
@@ -30,16 +28,12 @@ export default {
             <ChevronDoubleUpIcon class="icon" />
         </Action>
         <!-- <Action name="Deposit">
-                <ArrowDownLeftIcon class="icon" />
-            </Action>
-            <Action name="Withdraw">
-                <ArrowUpRightIcon class="icon" />
-            </Action> -->
-        <Action :name="isFavorite ? 'Bookmarked' : 'Bookmark'" @click="isFavorite = !isFavorite">
-            <BookmarkSlashIcon v-if="isFavorite" class="icon" />
-            <BookmarkIcon v-else class="icon" />
-        </Action>
-
+                    <ArrowDownLeftIcon class="icon" />
+                </Action>
+                <Action name="Withdraw">
+                    <ArrowUpRightIcon class="icon" />
+                </Action> -->
+        <BookmarkAction />
     </div>
 </template>
 

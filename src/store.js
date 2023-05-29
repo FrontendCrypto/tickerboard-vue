@@ -11,7 +11,7 @@ const store = createStore({
           showActions: true,
           showCategories: true
         },
-        favorites: preferences.favorites
+        bookmarks: preferences.bookmarks
       },
       ticker: 'btc',
       data: market['btc'],
@@ -23,7 +23,7 @@ const store = createStore({
   },
   getters: {
     isBookmarked(state) {
-      return state.user.favorites.includes(state.ticker)
+      return state.user.bookmarks.includes(state.ticker)
     }
   },
   mutations: {
@@ -44,8 +44,13 @@ const store = createStore({
     toggleConfiguration(state) {
       state.user.configuration.show = !state.user.configuration.show
     },
-    updateBookmarks(state, value) {
-      state.user.favorites = value
+    addBookmark(state) {
+      // Add current ticker to bookmarks array.
+      state.user.bookmarks.push(state.ticker)
+    },
+    removeBookmark(state) {
+      // Create nearray of bookmarks filtering current ticker.
+      state.user.bookmarks = state.user.bookmarks.filter((item) => item !== state.ticker)
     }
   }
 })
