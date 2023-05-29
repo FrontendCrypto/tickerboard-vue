@@ -24,6 +24,7 @@ export default {
       startY: 0,
     }
   },
+  // @todo getters and setters like in Configuration.vue
   computed: {
     filteredMarketData() {
       // Get only 18 elements from market
