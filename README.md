@@ -1,3 +1,5 @@
+![image](https://github.com/FrontendCrypto/tickerboard-vue/assets/4659020/c1af6cb9-cffb-49df-83cb-aaa6b6b9ab4b)
+
 # TickerBoardVue
 
 TickerBoard is a web application (work in progress) that displays real-time information about different cryptocurrencies. It aims to allow users to track the price and balance of various cryptocurrencies and will provide a chart to visualize their price trends (currently under development).
@@ -20,10 +22,6 @@ TickerBoard is designed to have the following features (currently in development
 - Keyboard navigation: The application will include a keyboard interface that enables users to navigate through different categories and cryptocurrencies efficiently.
 
 This repository is a Vue 3 project template called "TickerBoardVue". It is set up with Vite, a fast and lightweight build tool for Vue applications. Here are some additional details about the project:
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## Customize configuration
 
