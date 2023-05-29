@@ -13,8 +13,9 @@ const store = createStore({
         },
         bookmarks: preferences.bookmarks,
         keyboard: {
-          show: true
-        }
+          show: true,
+          height: Number
+        },
       },
       ticker: 'btc',
       data: market['btc'],
@@ -69,6 +70,9 @@ const store = createStore({
     },
     showKeyboard(state) {
       state.user.keyboard.show = true
+    },
+    setKeyboardHeight(state, value) {
+      state.user.keyboard.height = value
     }
   }
 })

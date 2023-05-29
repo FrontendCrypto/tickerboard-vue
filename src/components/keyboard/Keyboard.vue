@@ -37,6 +37,12 @@ export default {
     },
     isVisible() {
       return store.getters.isKeyboardVisible
+    },
+    keyboardHeight() {
+      return this.$refs.keyboard.offsetHeight
+    },
+    notchHeight() {
+      return this.$refs.notch.offsetHeight
     }
   },
   watch: {
@@ -52,16 +58,16 @@ export default {
       })
       // Hide configuration if open
       this.$store.commit('hideConfiguration')
+      this.$store.commit('setKeyboardHeight', this.keyboardHeight - this.notchHeight)
     },
     hide() {
-      const height = this.$refs.keyboard.offsetHeight;
-      const notchHeight = this.$refs.notch.offsetHeight;
       anime({
         targets: this.$refs.keyboard,
-        bottom: -height + notchHeight
+        bottom: -this.keyboardHeight + this.notchHeight
       })
       //hide configuration if open
       this.$store.commit('hideConfiguration')
+      this.$store.commit('setKeyboardHeight', 0)
     },
     onDragStart(event) {
       this.startY = event.clientY
@@ -123,16 +129,10 @@ export default {
   overflow: hidden;
 }
 
-.keyboard-wrapper {
-  background-color: #ffffff;
-  position: relative;
-}
-
 .keyboard {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  // background-color: #ffffff;
   position: absolute;
   bottom: 0;
   z-index: 3;
@@ -141,12 +141,19 @@ export default {
 
   &::after {
     content: '';
-    // background-color: #ffffff;
     position: absolute;
     z-index: -1;
     width: 100%;
     height: 100%;
   }
+}
+
+.keyboard-wrapper {
+  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .configuration {

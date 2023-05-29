@@ -5,7 +5,11 @@ import Change from './Change.vue'
 import BookmarkAction from '../actions/BookmarkAction.vue'
 import { BookmarkIcon } from '@heroicons/vue/24/solid'
 import fitty from 'fitty'
+import anime from 'animejs/lib/anime.es.js';
 
+
+// @todo Set content height on initialization looking keyboard status.
+// @todo keyboard status shown or hidden in initialization.
 export default {
     components: {
         BookmarkAction,
@@ -64,13 +68,26 @@ export default {
         isBookmarked() {
             // Get bookmark status
             return store.getters.isBookmarked
+        },
+        getKeyboardHeight() {
+            return store.state.user.keyboard.height
+        }
+    },
+    watch: {
+        getKeyboardHeight(value) {
+            anime({
+                targets: this.$refs.content,
+                height: `calc(100% - ${value}px)`,
+                easing: 'linear',
+                duration: 0
+            })
         }
     }
 }
 </script>
 
 <template>
-    <div class="content">
+    <div class="content" ref="content">
         <header class="header">
             <div class="header-icon">
                 <img :src="iconPath" :alt="name">
@@ -103,6 +120,10 @@ export default {
                     <p>{{ marketData.currentSupply }} {{ formattedTicker }}</p>
                 </div>
             </div>
+            <p>Long content</p>
+            <p>Long content</p>
+            <p>Long content</p>
+            <p>Long content</p>
         </main>
     </div>
 </template>
@@ -111,6 +132,10 @@ export default {
 .content {
     display: grid;
     gap: 24px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    grid-auto-rows: min-content;
+    padding-bottom: 32px;
 }
 
 .header {

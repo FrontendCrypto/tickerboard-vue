@@ -49,6 +49,7 @@ export default {
     grid-template-rows: 48px;
     overflow: hidden;
     grid-auto-flow: column;
+    gap: 4px;
     /* 1 line */
 }
 </style>
