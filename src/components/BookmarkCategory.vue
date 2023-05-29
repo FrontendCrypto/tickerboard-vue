@@ -33,7 +33,7 @@ button {
 .counter {
     width: 14px;
     height: 14px;
-    background-color: red;
+    background-color: rgb(195, 195, 195);
     display: flex;
     align-items: center;
     justify-content: center;

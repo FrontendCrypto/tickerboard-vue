@@ -16,16 +16,6 @@ export default {
     Tab,
     Configuration
   },
-  data() {
-    return {
-      isFavorite: true,
-    }
-  },
-
-  methods: {
-
-  },
-
   computed: {
     filteredMarketData() {
       return Object.values(market).slice(0, 18) // Get only 18 elements from market
@@ -42,14 +32,14 @@ export default {
 
 <template>
   <div class="keyboard">
-    <Configuration />
+    <Configuration class="configuration" />
     <Tab />
     <Categories v-show="categories" />
     <div class="coins">
       <Coin v-for="coin in filteredMarketData" :ticker="coin.ticker" :key="coin.ticker" />
     </div>
     <!-- @todo -->
-    <Actions :isFavorite="true" v-show="actions" />
+    <Actions v-show="actions" />
   </div>
 </template>
 
@@ -71,5 +61,21 @@ export default {
   bottom: 0;
   z-index: 3;
   width: 100%;
+
+  &::after {
+    content: '';
+    background-color: #ffffff;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.configuration {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
 }
 </style>

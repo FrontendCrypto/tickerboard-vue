@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
+    "animejs": "^3.2.1",
     "apexcharts": "^3.40.0",
     "pinia": "^2.0.36",
     "sass": "^1.62.1",
