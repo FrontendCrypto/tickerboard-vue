@@ -1,8 +1,8 @@
 <template>
     <div class="configuration" ref="configuration">
         <div class="configuration-item">
-            <v-switch label="¿Show categories?" inset v-model="categories" @click="toggleCategories"></v-switch>
-            <v-switch label="¿Show actions?" inset v-model="actions" @click="toggleActions"></v-switch>
+            <v-switch label="¿Show categories?" inset v-model="categories" @click="categories"></v-switch>
+            <v-switch label="¿Show actions?" inset v-model="actions" @click="actions"></v-switch>
             <v-select v-model="currencySelect" :items="curencies" item-title="state" item-value="abbr"
                 label="Select favorite currency" persistent-hint return-object single-line></v-select>
             <v-select v-model="languageSelect" :items="languages" item-title="state" item-value="abbr"
@@ -38,12 +38,6 @@ export default {
         console.log(this.$refs.configuration.clientHeight)
     },
     methods: {
-        toggleCategories() {
-            this.$store.commit('toggleCategories')
-        },
-        toggleActions() {
-            this.$store.commit('toggleActions')
-        },
         hideConfiguration() {
             this.$store.commit('toggleConfiguration')
             this.hide()
@@ -68,11 +62,21 @@ export default {
         }
     },
     computed: {
-        categories() {
-            return store.state.user.configuration.showCategories
+        categories: {
+            get() {
+                return store.state.user.configuration.showCategories;
+            },
+            set(value) {
+                this.$store.commit('toggleCategories', value);
+            }
         },
-        actions() {
-            return store.state.user.configuration.showActions
+        actions: {
+            get() {
+                return store.state.user.configuration.showActions
+            },
+            set(value) {
+                this.$store.commit('toggleActions', value)
+            }
         },
         isVisible() {
             return store.state.user.configuration.show
