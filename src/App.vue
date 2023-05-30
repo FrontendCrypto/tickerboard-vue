@@ -12,17 +12,7 @@ import Content from './components/content/Content.vue'
 </template>
 
 <style>
-#app {
-  display: flex;
-  justify-content: center;
-  background-color: #1a1a1a;
-}
-
 .device {
-  width: 360px;
-  height: 800px;
-  position: relative;
-  overflow: hidden;
-  background-color: #1a1a1a;
+  width: 100%;
 }
 </style>

@@ -1,16 +1,17 @@
 <template>
     <div class="configuration" ref="configuration">
-        <div class="configuration-item">
-            <v-switch label="¿Show categories?" inset v-model="categories" @click="categories"></v-switch>
-            <v-switch label="¿Show actions?" inset v-model="actions" @click="actions"></v-switch>
-            <v-select v-model="currencySelect" :items="curencies" item-title="state" item-value="abbr"
-                label="Select favorite currency" persistent-hint return-object single-line></v-select>
-            <v-select v-model="languageSelect" :items="languages" item-title="state" item-value="abbr"
-                label="Select language" persistent-hint return-object single-line></v-select>
+        <div class="configuration-wrapper">
+            <div class="configuration-item">
+                <v-switch label="¿Show actions?" inset v-model="actions" @click="actions"></v-switch>
+                <v-select v-model="currencySelect" :items="curencies" item-title="state" item-value="abbr"
+                    label="Select favorite currency" persistent-hint return-object single-line></v-select>
+                <v-select v-model="languageSelect" :items="languages" item-title="state" item-value="abbr"
+                    label="Select language" persistent-hint return-object single-line></v-select>
+            </div>
+            <v-btn variant="text" block @click="hideConfiguration">
+                Close
+            </v-btn>
         </div>
-        <v-btn variant="text" block @click="hideConfiguration">
-            Close
-        </v-btn>
     </div>
 </template>
 
@@ -34,9 +35,6 @@ export default {
             ],
         }
     },
-    mounted() {
-        console.log(this.$refs.configuration.clientHeight)
-    },
     methods: {
         hideConfiguration() {
             this.$store.commit('toggleConfiguration')
@@ -45,14 +43,15 @@ export default {
         hide() {
             anime({
                 targets: this.$refs.configuration,
-                translateY: 0
+                translateY: 0,
+                borderRadius: 0
             });
         },
         show() {
             anime({
                 targets: this.$refs.configuration,
-                translateY: -this.getHeight - 40,
-                borderRadius: ['0%', '16px']
+                translateY: -this.keyboardHeight - 44,
+                borderRadius: 16
             });
         }
     },
@@ -62,14 +61,6 @@ export default {
         }
     },
     computed: {
-        categories: {
-            get() {
-                return store.state.user.configuration.showCategories;
-            },
-            set(value) {
-                this.$store.commit('toggleCategories', value);
-            }
-        },
         actions: {
             get() {
                 return store.state.user.configuration.showActions
@@ -78,11 +69,15 @@ export default {
                 this.$store.commit('toggleActions', value)
             }
         },
-        isVisible() {
-            return store.state.user.configuration.show
+        isVisible: {
+            get() {
+                return store.state.user.configuration.show
+            }
         },
-        getHeight() {
-            return this.$refs.configuration.clientHeight
+        keyboardHeight: {
+            get() {
+                return this.$refs.configuration.clientHeight
+            }
         }
     }
 }
@@ -90,11 +85,18 @@ export default {
 
 <style scoped lang="scss">
 .configuration {
-    width: 100%;
-    padding: 16px;
-    background-color: black;
     position: absolute;
     top: 0;
     z-index: 0;
+    width: 100%;
+    left: 0;
+    padding: 0 16px;
+}
+
+.configuration-wrapper {
+    width: 100%;
+    padding: 16px;
+    background-color: hsl(0, 0%, 99%);
+    border-radius: 16px;
 }
 </style>

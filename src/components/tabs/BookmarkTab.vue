@@ -1,10 +1,16 @@
 <script>
 import store from '../../store'
+import { BookmarkIcon } from '@heroicons/vue/24/solid'
 
 export default {
+    components: {
+        BookmarkIcon
+    },
     computed: {
-        bookmarksCount() {
-            return store.state.user.bookmarks.length
+        count: {
+            get() {
+                return store.state.user.bookmarks.length
+            }
         }
     }
 }
@@ -12,9 +18,9 @@ export default {
 
 <template>
     <button>
-        <slot></slot>
+        <BookmarkIcon class="icon" />
         <span>Bookmarks</span>
-        <span class="counter" v-if="bookmarksCount">{{ bookmarksCount }}</span>
+        <span class="counter" v-if="count">{{ count }}</span>
     </button>
 </template>
 
@@ -39,8 +45,8 @@ button {
     justify-content: center;
     font-size: 10px;
     position: absolute;
-    right: 2px;
-    top: 2px;
+    right: 4px;
+    top: 4px;
     z-index: 2;
     border-radius: 50%;
 }

@@ -13,7 +13,7 @@ export default {
     VueApexCharts
   },
   props: {
-    ticker: String,
+    
   },
   data() {
     return {

@@ -18,11 +18,15 @@ export default {
         name: String
     },
     computed: {
-        isBookmarked() {
-            return store.getters.isBookmarked
+        isBookmarked: {
+            get() {
+                return store.getters.isBookmarked
+            }
         },
-        getText() {
-            return this.isBookmarked ? 'Bookmarked' : 'Bookmark'
+        statusText: {
+            get() {
+                return this.isBookmarked ? 'Bookmarked' : 'Bookmark'
+            }
         }
     },
     methods: {
@@ -44,7 +48,7 @@ export default {
     <button @click="this.toggle()">
         <BookmarkSlashIcon v-if="isBookmarked" class="icon" />
         <BookmarkIcon v-else class="icon" />
-        <span>{{ getText }}</span>
+        <span>{{ statusText }}</span>
     </button>
 </template>
 

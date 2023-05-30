@@ -1,18 +1,13 @@
 <script>
 import Action from './Action.vue'
-import BookmarkAction from './BookmarkAction.vue'
 import { ArrowsUpDownIcon, ChevronDoubleUpIcon, ChevronDoubleDownIcon } from '@heroicons/vue/24/solid'
 export default {
     components: {
         Action,
-        BookmarkAction,
         ArrowsUpDownIcon,
         ChevronDoubleDownIcon,
         ChevronDoubleUpIcon,
     },
-    props: {
-        isFavorite: Boolean,
-    }
 }
 </script>
 

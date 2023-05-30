@@ -1,6 +1,6 @@
 <template>
-  <button @click="onCoinPressed" :class="isActive">
-    <img :src="iconPath" size="20" />
+  <button @click="onCoinPressed" :class="active">
+    <img :src="iconPath" size="20" :alt="getTicker" />
     <span>{{ ticker }}</span>
   </button>
 </template>
@@ -13,22 +13,30 @@ export default {
   },
   methods: {
     onCoinPressed() {
-      this.$store.commit('selectCoin', this.getFormattedTicker) // @test lorcase
+      this.$store.commit('selectCoin', this.formattedTicker) // @test lorcase
     }
   },
   computed: {
-    getFormattedTicker() {
-      return this.ticker.toLowerCase()
+    formattedTicker: {
+      get() {
+        return this.ticker.toLowerCase()
+      }
     },
-    getTicker() {
-      return store.state.ticker
+    getTicker: {
+      get() {
+        return store.state.ticker
+      }
     },
-    isActive() {
-      return this.getFormattedTicker === this.getTicker ? 'active' : '';
+    active: {
+      get() {
+        return this.formattedTicker === this.getTicker ? 'active' : ''
+      }
     },
-    iconPath() {
-      const path = `src/assets/icons/coins/${this.getFormattedTicker}.svg`;
-      return path;
+    iconPath: {
+      get() {
+        const path = `src/assets/icons/coins/${this.formattedTicker}.svg`
+        return path;
+      }
     }
   }
 };

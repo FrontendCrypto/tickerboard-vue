@@ -9,7 +9,6 @@ const store = createStore({
         configuration: {
           show: false,
           showActions: true,
-          showCategories: true
         },
         bookmarks: preferences.bookmarks,
         keyboard: {

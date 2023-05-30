@@ -1,9 +1,8 @@
 <script>
 import { market } from '../../data/market'
 import Actions from '../actions/Actions.vue'
-import Categories from '../categories/Categories.vue'
 import Coin from './Coin.vue'
-import Tab from './Tab.vue'
+import Tabs from '../tabs/Tabs.vue'
 import Configuration from './Configuration.vue'
 import anime from 'animejs/lib/anime.es.js';
 import { Bars2Icon } from '@heroicons/vue/24/solid'
@@ -12,10 +11,9 @@ import store from '../../store'
 
 export default {
   components: {
-    Categories,
     Coin,
     Actions,
-    Tab,
+    Tabs,
     Configuration,
     Bars2Icon
   },
@@ -24,26 +22,38 @@ export default {
       startY: 0,
     }
   },
+  mounted() {
+    // Trigger store update to check if content needs scroll
+    this.keyboardHeight = this.keyboardHeight - this.notchHeight
+  },
   // @todo getters and setters like in Configuration.vue
   computed: {
     filteredMarketData() {
       // Get only 18 elements from market
       return Object.values(market).slice(0, 18)
     },
-    actions() {
-      return store.state.user.configuration.showActions
+    actions: {
+      get() {
+        return store.state.user.configuration.showActions
+      }
     },
-    categories() {
-      return store.state.user.configuration.showCategories
+    isVisible: {
+      get() {
+        return store.getters.isKeyboardVisible
+      }
     },
-    isVisible() {
-      return store.getters.isKeyboardVisible
+    keyboardHeight: {
+      get() {
+        return this.$refs.keyboard.offsetHeight
+      },
+      set(value) {
+        this.$store.commit('setKeyboardHeight', value)
+      }
     },
-    keyboardHeight() {
-      return this.$refs.keyboard.offsetHeight
-    },
-    notchHeight() {
-      return this.$refs.notch.offsetHeight
+    notchHeight: {
+      get() {
+        return this.$refs.notch.offsetHeight
+      }
     }
   },
   watch: {
@@ -59,16 +69,18 @@ export default {
       })
       // Hide configuration if open
       this.$store.commit('hideConfiguration')
-      this.$store.commit('setKeyboardHeight', this.keyboardHeight - this.notchHeight)
+      this.keyboardHeight = this.keyboardHeight - this.notchHeight
+      // this.$store.commit('setKeyboardHeight', this.keyboardHeight - this.notchHeight)
     },
     hide() {
       anime({
         targets: this.$refs.keyboard,
         bottom: -this.keyboardHeight + this.notchHeight
       })
-      //hide configuration if open
+      // hide configuration if open
       this.$store.commit('hideConfiguration')
-      this.$store.commit('setKeyboardHeight', 0)
+      this.keyboardHeight = 0
+      // this.$store.commit('setKeyboardHeight', 0)
     },
     onDragStart(event) {
       this.startY = event.clientY
@@ -96,8 +108,7 @@ export default {
     </div>
     <div class="keyboard-wrapper">
       <Configuration class="configuration" />
-      <Tab />
-      <Categories v-show="categories" />
+      <Tabs />
       <div class="coins">
         <Coin v-for="coin in filteredMarketData" :ticker="coin.ticker" :key="coin.ticker" />
       </div>
@@ -139,22 +150,15 @@ export default {
   z-index: 3;
   width: 100%;
   user-select: none;
-
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .keyboard-wrapper {
-  background-color: #ffffff;
+  background-color: hsl(0, 0%, 99%);
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: 4px;
 }
 
 .configuration {

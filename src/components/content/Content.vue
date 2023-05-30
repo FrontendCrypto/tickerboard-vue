@@ -30,51 +30,75 @@ export default {
     },
     computed: {
         // Computed are re-evaluated on change => store
-        iconPath() {
-            const part = this.ticker.toLowerCase();
-            return `src/assets/icons/coins/${part}.svg`
-        },
-        icon() {
-            return store.state.icon
-        },
-        currency() {
-            return store.state.user.currency
-        },
-        ticker() {
-            return store.state.ticker
-        },
-        formattedTicker() {
-            return this.ticker.toUpperCase()
-        },
-        name() {
-            return store.state.data.name
-        },
-        price() {
-            return this.formatNumber(store.state.data.price)
-        },
-        change() {
-            return this.formatNumber(store.state.data.change)
-        },
-        marketData() {
-            return {
-                capitalization: this.formatNumber(store.state.data.market.capitalization),
-                maxSupply: this.formatNumber(store.state.data.market.maxSupply),
-                currentSupply: this.formatNumber(store.state.data.market.currentSupply),
+        iconPath: {
+            get() {
+                const part = this.ticker.toLowerCase();
+                return `src/assets/icons/coins/${part}.svg`
             }
         },
-        color() {
-            return store.state.color
+        icon: {
+            get() {
+                return store.state.icon
+            }
         },
-        isBookmarked() {
+        currency: {
+            get() {
+                return store.state.user.currency
+            }
+        },
+        ticker: {
+            get() {
+                return store.state.ticker
+            }
+        },
+        formattedTicker: {
+            get() {
+                return this.ticker.toUpperCase()
+            }
+        },
+        name: {
+            get() {
+                return store.state.data.name
+            }
+        },
+        price: {
+            get() {
+                return this.formatNumber(store.state.data.price)
+            }
+        },
+        change: {
+            get() {
+                return this.formatNumber(store.state.data.change)
+            }
+        },
+        marketData: {
+            get() {
+                return {
+                    capitalization: this.formatNumber(store.state.data.market.capitalization),
+                    maxSupply: this.formatNumber(store.state.data.market.maxSupply),
+                    currentSupply: this.formatNumber(store.state.data.market.currentSupply),
+                }
+            }
+        },
+        color: {
+            get() {
+                return store.state.color
+            }
+        },
+        isBookmarked: {
             // Get bookmark status
-            return store.getters.isBookmarked
+            get() {
+                return store.getters.isBookmarked
+            }
         },
-        getKeyboardHeight() {
-            return store.state.user.keyboard.height
+        keyboardHeight: {
+            get() {
+                return store.state.user.keyboard.height
+            }
         }
     },
     watch: {
-        getKeyboardHeight(value) {
+        keyboardHeight(value) {
             anime({
                 targets: this.$refs.content,
                 height: `calc(100% - ${value}px)`,
@@ -136,6 +160,10 @@ export default {
     overflow-x: hidden;
     grid-auto-rows: min-content;
     padding-bottom: 32px;
+}
+
+main {
+    padding: 0 16px;
 }
 
 .header {
